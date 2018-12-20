@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link rel="stylesheet" href="reveal.js-3.7.0/css/reveal.css">
-  <link rel="stylesheet" href="reveal.js-3.7.0/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="reveal.js-3.7.0/css/theme/moon.css" id="theme">
 
   <!-- Theme used for syntax highlighting of code -->
   <link rel="stylesheet" href="reveal.js-3.7.0/lib/css/zenburn.css">
@@ -27,50 +27,66 @@
 
 <body>
 
-  <div class="reveal">
-
-    <!-- Any section element inside of this container is displayed as a slide -->
-    <div class="slides">
-      <!-- <section data-markdown="doc/miniapp.md?r=1" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section> -->
-    <!-- Slides are separated by three dashes (quick 'n dirty regular expression) -->
-    <section data-markdown data-separator="---">
+<div class="reveal"><!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides"><!-- <section data-markdown="doc/miniapp.md?r=1" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section> -->
+<section data-markdown data-separator="\n===\n" data-separator-vertical="---\n"><!-- Slides are separated by three dashes (quick 'n dirty regular expression) -->
 <script type="text/template">
 
-# 微信小程序开发
+## 微信小程序开发
 
-信息技术部 - 阮荣军
+华林证券 - 信息技术部
+
+<small>With 💗 by [@阮荣军](https://iray.me)</small>
 
 <small>2018-12-27</small>
 
----
-<!-- .slide: data-background="#fff" data-text-align="left" -->
+===
 
-## 目录
+### 概 述
 
-- 小程序简介
-- 注册账号
-- 搭建开发环境
-![avatar](./doc/asset/images/1.jpg) <!-- element: data-border="none" -->
+小程序是一种不需要下载安装即可使用的应用，它实现了应用「触手可及」的梦想，用户扫一扫或搜一下即可打开应用。也体现了「用完即走」的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
 
 ---
 
-## 开发流程
+- Native APP
+- Web App
+- Hybird App
+- React Native/Weex
+- 小程序
+- PWA(Progressive Web App)
 
-1. 注册小程序账号
-2. 搭建开发环境
+===
+
+### 开发流程
+
+1. 注册账号
+2. 搭建环境
+3. 开发/测试
+4. 生产部署/发布
+
+===
+
+### <a target="_blank" href="https://mp.weixin.qq.com/">注册账号</a>
+
+===
+
+### 环境搭建
 
 ---
 
-## 环境搭建
+#### 生产环境
 
+![dev](./doc/asset/images/prod.png)
 
-### 开发/测试环境搭建
+---
 
-### 生产环境
+#### 开发/测试环境
 
+![dev](./doc/asset/images/dev.png)
 
+===
 
-## 常见问题/坑
+### 常见问题/坑
 
 ## 周边
 
@@ -78,11 +94,9 @@
 
 ### Taro UI
 </script>
-    </section>
-
-    </div>
-
-  </div>
+</section>
+</div>
+</div>
 
   <script src="reveal.js-3.7.0/lib/js/head.min.js"></script>
   <script src="reveal.js-3.7.0/js/reveal.js"></script>
@@ -95,8 +109,8 @@
       progress: true,
       history: true,
       center: true,
-
-      transition: 'slide', // none/fade/slide/convex/concave/zoom
+      slideNumber: true,
+      transition: 'convex', // none/fade/slide/convex/concave/zoom
 
       // More info https://github.com/hakimel/reveal.js#dependencies
       dependencies: [
