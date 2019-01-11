@@ -10,24 +10,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link rel="stylesheet" href="reveal.js-3.7.0/css/reveal.css">
-  <link rel="stylesheet" href="reveal.js-3.7.0/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="reveal.js-3.7.0/css/theme/black.css" id="theme">
 
   <!-- Theme used for syntax highlighting of code -->
   <link rel="stylesheet" href="reveal.js-3.7.0/lib/css/zenburn.css">
+  <link rel="stylesheet" href="reveal.js-3.7.0/css/print/paper.css">
 
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js-3.7.0/css/print/pdf.css' : 'reveal.js-3.7.0/css/print/paper.css';
-    document.getElementsByTagName('head')[0].appendChild(link);
-  </script>
 </head>
 
 <body>
 
-<div class="reveal"><!-- Any section element inside of this container is displayed as a slide -->
+<div class="reveal">
 <div class="slides"><!-- <section data-markdown="doc/miniapp.md?r=1" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section> -->
 <section data-markdown data-separator="\n===\n" data-separator-vertical="---\n"><!-- Slides are separated by three dashes (quick 'n dirty regular expression) -->
 <script type="text/template">
@@ -76,23 +69,84 @@
 
 #### 生产环境
 
-![dev](./doc/asset/images/prod.png)
+![dev](./asset/images/prod.png)
 
 ---
 
 #### 开发/测试环境
 
-![dev](./doc/asset/images/dev.png)
+![dev](./asset/images/dev.png)
 
 ===
 
-### 常见问题/坑
+### 开发/编码
 
-## 周边
+![dev](./asset/images/icon.ico)
 
-### Mapvue
+---
 
-### Taro UI
+#### WXML (WeiXin Markup Language)
+
+- 支持数据绑定
+- 支持逻辑算数、运算
+- 支持支持模板、引用
+- 支持事件绑定(bindtap)
+
+---
+
+#### WXSS (WeiXin Style Sheet)
+
+- 支持大部分CSS特性
+- 添加尺寸单位rpx，可根据屏幕宽度自适应
+- 使用@import语句导入外联样式表
+
+---
+
+#### JAVASCRIPT (逻辑层)
+
+- App()小程序入口；Page() 页面入口
+- 提供丰富的<a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/api/">API</a>
+- 每个页面具有独立的作用域
+- 生命周期管理，路由管理
+
+
+===
+
+### 发布
+
+===
+
+### 总结
+
+---
+
+#### 优点/值得借鉴的地方
+
+1. 使用Virtual DOM 进行局部更新
+2. 全部强制https，确保传输安全
+3. 前端组件化开发
+4. rpx单位的加入，方便开发
+5. 路由管理简洁方便
+
+---
+
+#### 常见问题/坑
+
+- 无法进行全局polyfill
+- WXS的基础类库比较鸡肋，只支持ES5语法
+- WXSS(CSS)不支持预处理语言
+
+===
+
+### 相关/拓展
+
+- <a target="_blank" href="https://github.com/Meituan-Dianping/mpvue">Mapvue</a>
+- <a target="_blank" href="https://taro.aotu.io/">Taro UI</a>
+
+===
+
+### Thank you！
+
 </script>
 </section>
 </div>
@@ -105,6 +159,8 @@
 
     // More info https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
+      width: "100%",
+  	  height: "100%",
       controls: true,
       progress: true,
       history: true,
@@ -117,7 +173,7 @@
         { src: 'reveal.js-3.7.0/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
         { src: 'reveal.js-3.7.0/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
         { src: 'reveal.js-3.7.0/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-        { src: 'reveal.js-3.7.0/plugin/search/search.js', async: true },
+        // { src: 'reveal.js-3.7.0/plugin/search/search.js', async: true },
         { src: 'reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
         { src: 'reveal.js-3.7.0/plugin/notes/notes.js', async: true }
       ]
