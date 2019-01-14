@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>The HTML Presentation Framework</title>
+  <title>小程序开发</title>
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,6 +15,7 @@
   <!-- Theme used for syntax highlighting of code -->
   <link rel="stylesheet" href="reveal.js-3.7.0/lib/css/zenburn.css">
   <link rel="stylesheet" href="reveal.js-3.7.0/css/print/paper.css">
+  <link rel="stylesheet" href="css/index.css">
 
 </head>
 
@@ -31,26 +32,29 @@
 
 <small>With 💗 by [@阮荣军](https://iray.me)</small>
 
-<small>2018-12-27</small>
+<small>2019-01-14</small>
 
 ===
 
-### 概 述
+### 概念
 
-小程序是一种不需要下载安装即可使用的应用，它实现了应用「触手可及」的梦想，用户扫一扫或搜一下即可打开应用。也体现了「用完即走」的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。
+---
+<!-- .element: class="concept" -->
+*"小程序是一种不需要下载安装即可使用的应用，它实现了应用 **「触手可及」**的梦想，用户扫一扫或搜一下即可打开应用。也体现了**「用完即走」**的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。"*
+
+<p style="font-size:0.6em;text-align:right;"><em>–– 百度百科</em></p>
 
 ---
 
-- Native APP
+- Native App
 - Web App
 - Hybird App
-- React Native/Weex
-- 小程序
-- PWA(Progressive Web App)
 
 ===
 
 ### 开发流程
+
+---
 
 1. 注册账号
 2. 搭建环境
@@ -59,10 +63,13 @@
 
 ===
 
+![dev](./asset/images/reg.png)
 ### <a target="_blank" href="https://mp.weixin.qq.com/">注册账号</a>
 
 ===
 
+
+![dev](./asset/images/env_set.png)
 ### 环境搭建
 
 ---
@@ -79,40 +86,128 @@
 
 ===
 
+![dev](./asset/images/code.png)
 ### 开发/编码
-
-![dev](./asset/images/icon.ico)
 
 ---
 
 #### WXML (WeiXin Markup Language)
 
+---
+
+```html
+<!-- index.wxml -->
+<wxs module="tools">
+  module.exports = {
+    formatTime: function(time,isShort) {
+      return isShort ? time.slice(11, 16): time.slice(5, 10);
+    }
+  }
+</wxs>
+<template name="shortcut">
+  <view class="item">text</view>
+</template>
+<block wx:for="{{list}}" wx:key="{{index}}">
+  <template wx:if="{{item.orderIdx % 2 == 1}}" is="vertical-list" data="{{item}}" />
+</block>
+```
+
+---
+
+#### WXML特性
+
 - 支持数据绑定
 - 支持逻辑算数、运算
-- 支持支持模板、引用
+- 支持模板引用
 - 支持事件绑定(bindtap)
 
 ---
 
 #### WXSS (WeiXin Style Sheet)
 
+---
+
+```css
+/* index.wxss */
+.container {
+  width: 100%;
+  height: 100%;
+  background: #f2f4f8;
+}
+
+.abstract {
+  margin: 24rpx 24rpx;
+  padding: 26rpx 32rpx 0;
+  font-size: 30rpx;
+  color: #000;
+  box-shadow: 2rpx 4rpx 8rpx #e0e0e0;
+}
+
+```
+
+---
+
+#### WXSS特性
 - 支持大部分CSS特性
 - 添加尺寸单位rpx，可根据屏幕宽度自适应
 - 使用@import语句导入外联样式表
 
 ---
 
-#### JAVASCRIPT (逻辑层)
+#### JS (Javascript)
 
-- App()小程序入口；Page() 页面入口
-- 提供丰富的<a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/api/">API</a>
+---
+
+```js
+// app.js  入口文件
+
+App({
+  onLaunch(){}, // 监听小程序初始化
+  onShow(){},   // 监听小程序显示
+  onHide(){},   // 监听小程序隐藏
+  onError(){},  // 错误监听
+  globalData: {
+    userid: '', // 用户id  登录成功才有 914855
+    uniqid: '', // 后端生成的唯一ID 对应一个微信openid 84f69ca47f224f5890685302e883a7c1
+  }
+})
+
+```
+
+---
+
+```js
+// index.js  页面文件
+Page({
+  data: {}, // 页面的初始数据
+  onLoad: function (options) { }, // 生命周期函数--监听页面加载
+  onReady: function () { }, // 生命周期函数--监听页面初次渲染完成
+  onShow: function () { }, // 生命周期函数--监听页面显示
+  onHide: function () { }, // 生命周期函数--监听页面隐藏
+  onUnload: function () { }, // 生命周期函数--监听页面卸载
+  onPullDownRefresh: function () { }, // 页面相关事件处理函数--监听用户下拉动作
+  onReachBottom: function () { }, // 页面上拉触底事件的处理函数
+  onShareAppMessage: function () { } //用户点击右上角分享
+})
+
+```
+
+---
+
+#### JS特性
+- 提供丰富的 <a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/api/">API</a>
 - 每个页面具有独立的作用域
 - 生命周期管理，路由管理
 
 
 ===
 
+![dev](./asset/images/release.png)
 ### 发布
+---
+
+1. 提交审核
+2. 确认发布
 
 ===
 
@@ -122,8 +217,8 @@
 
 #### 优点/值得借鉴的地方
 
-1. 使用Virtual DOM 进行局部更新
-2. 全部强制https，确保传输安全
+1. 使用 Virtual DOM 进行局部更新
+2. 全部强制 https，确保传输安全
 3. 前端组件化开发
 4. rpx单位的加入，方便开发
 5. 路由管理简洁方便
